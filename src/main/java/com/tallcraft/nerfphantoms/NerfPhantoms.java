@@ -30,6 +30,8 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
+import com.tallcraft.nerfphantoms.hook.NerfPhantomsPlaceholderExpansion;
+
 public final class NerfPhantoms extends JavaPlugin implements Listener {
     private final Logger logger = Logger.getLogger(this.getName());
     private Storage storage;
@@ -59,6 +61,9 @@ public final class NerfPhantoms extends JavaPlugin implements Listener {
         getCommand("nerfphantoms").setTabCompleter(new TabCompletion());
         getServer().getPluginManager().registerEvents(this, this);
         new StatResetTask(this).runTaskTimerAsynchronously(this, 0L, 1200L);
+
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null)
+            new NerfPhantomsPlaceholderExpansion().register();
     }
 
 
