@@ -333,4 +333,10 @@ public final class NerfPhantoms extends JavaPlugin implements Listener {
         config.options().copyDefaults(true);
         saveConfig();
     }
+
+    public boolean isPhantomDisabled(Player player) {
+        if(player == null)
+            return false;
+        return phantomDisabled.contains(player);
+    }
 }
